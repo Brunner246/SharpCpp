@@ -1,8 +1,6 @@
 
 
-#include "pch.h"
-
-// #using "CSharpClass.dll"
+#include "SharpCpp.h"
 
 class Test {
  public:
@@ -16,13 +14,12 @@ class Test {
 
 using namespace System;
 
-int main() {
+int mainTest() {
   CSharp::CSharpMath ^ lMath = gcnew CSharp::CSharpMath();
   auto lResult = lMath->Add(1, 2);
-  Console::WriteLine("Result: " + lResult);
 
   auto lTest = Test(123);
-  Console::WriteLine("Cpp Class " + lTest());
+  Console::WriteLine(lTest());
 
   Grundlagen::Student ^ lStudent = gcnew Grundlagen::Student();
   lStudent->FirstName = "hans";

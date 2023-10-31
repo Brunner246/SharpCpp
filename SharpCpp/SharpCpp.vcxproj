@@ -43,14 +43,14 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CLRSupport>true</CLRSupport>
@@ -74,15 +74,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>C:\Users\Public\Documents\cadwork\userprofil_30\3d\API.x64\SharpCpp\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions);CWAPI3D_PLUGIN_NAME=L"Cadwork Test Plugin";CWAPI3D_AUTHOR_NAME=L"Michael Brunner";CWAPI3D_AUTHOR_EMAIL=L"brunner@cadwork.swiss";CWAPI3D_PLUGIN_NAME=L"Cadwork Test Plugin";CWAPI3D_AUTHOR_NAME=L"Michael Brunner";CWAPI3D_AUTHOR_EMAIL=L"brunner@cadwork.swiss"</PreprocessorDefinitions>
       <AdditionalUsingDirectories>C:\cadwork-plugins\SharpCpp\CSharpClass\bin\Debug;C:\cadwork-plugins\SharpCpp\CSharper\bin\Debug;C:\cadwork-plugins\SharpCpp\CSharper\bin\Release;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -115,12 +119,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);CWAPI3D_PLUGIN_NAME=L"Cadwork Test Plugin";CWAPI3D_AUTHOR_NAME=L"Michael Brunner";CWAPI3D_AUTHOR_EMAIL=L"brunner@cadwork.swiss";CSHARP_EXPORT;CWAPI3D_PLUGIN_NAME=L"Cadwork Test Plugin";CWAPI3D_AUTHOR_NAME=L"Michael Brunner";CWAPI3D_AUTHOR_EMAIL=L"brunner@cadwork.swiss"</PreprocessorDefinitions>
       <AdditionalUsingDirectories>C:\cadwork-plugins\SharpCpp\CSharpClass\bin\Debug;C:\cadwork-plugins\SharpCpp\CSharper\bin\Debug;C:\cadwork-plugins\SharpCpp\CSharper\bin\Release;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -133,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SharpCpp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -159,6 +165,9 @@
     <ProjectReference Include="..\CSharper\CSharper.csproj">
       <Project>{1e544738-61b3-4885-8dcd-d1e0ee2ca758}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Api.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
